@@ -1,0 +1,1435 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ProFason | Türkiye'nin Fason Üretim Köprüsü</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0D0D0D;
+    --cream: #F5F0E8;
+    --rust: #C4441A;
+    --rust-light: #E8532A;
+    --gold: #D4A843;
+    --sage: #4A6741;
+    --mist: #E8EDE6;
+    --white: #FAFAF8;
+    --border: rgba(13,13,13,0.12);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Manrope', sans-serif;
+    background: var(--white);
+    color: var(--ink);
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 5vw;
+    height: 70px;
+    background: rgba(250,250,248,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.8rem;
+    letter-spacing: 0.08em;
+    color: var(--ink);
+    text-decoration: none;
+  }
+  .nav-logo span { color: var(--rust); }
+
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    font-size: 0.82rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--rust); }
+
+  .nav-cta {
+    background: var(--ink);
+    color: var(--white) !important;
+    padding: 0.55rem 1.4rem;
+    border-radius: 2px;
+    transition: background 0.2s !important;
+  }
+  .nav-cta:hover { background: var(--rust) !important; color: var(--white) !important; }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding: 70px 5vw 0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -10%; right: -5%;
+    width: 60vw; height: 110vh;
+    background: var(--cream);
+    clip-path: polygon(8% 0%, 100% 0%, 100% 100%, 0% 100%);
+    z-index: 0;
+  }
+
+  .hero-text { position: relative; z-index: 1; }
+
+  .hero-eyebrow {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--rust);
+    margin-bottom: 1.2rem;
+    display: flex; align-items: center; gap: 0.8rem;
+  }
+  .hero-eyebrow::before {
+    content: '';
+    display: inline-block;
+    width: 32px; height: 2px;
+    background: var(--rust);
+  }
+
+  .hero-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(3.5rem, 7vw, 6.5rem);
+    line-height: 0.92;
+    letter-spacing: 0.02em;
+    margin-bottom: 1.8rem;
+    color: var(--ink);
+  }
+  .hero-title .accent { color: var(--rust); }
+
+  .hero-sub {
+    font-size: 1rem;
+    font-weight: 400;
+    color: #444;
+    line-height: 1.7;
+    max-width: 460px;
+    margin-bottom: 2.5rem;
+  }
+
+  .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+  .btn-primary {
+    background: var(--rust);
+    color: var(--white);
+    padding: 0.9rem 2rem;
+    border: 2px solid var(--rust);
+    border-radius: 2px;
+    font-family: 'Manrope', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.25s;
+    display: inline-block;
+  }
+  .btn-primary:hover { background: transparent; color: var(--rust); }
+
+  .btn-outline {
+    background: transparent;
+    color: var(--ink);
+    padding: 0.9rem 2rem;
+    border: 2px solid var(--ink);
+    border-radius: 2px;
+    font-family: 'Manrope', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.25s;
+    display: inline-block;
+  }
+  .btn-outline:hover { background: var(--ink); color: var(--white); }
+
+  .hero-visual { position: relative; z-index: 1; display: flex; justify-content: center; align-items: center; }
+
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    width: 100%;
+    max-width: 480px;
+  }
+
+  .hero-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 1.4rem;
+    text-align: center;
+    transition: transform 0.25s, box-shadow 0.25s;
+  }
+  .hero-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,0.08); }
+  .hero-card .icon { font-size: 2rem; margin-bottom: 0.5rem; }
+  .hero-card .label { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.06em; color: #555; }
+
+  /* ── STATS STRIP ── */
+  .stats-strip {
+    background: var(--ink);
+    color: var(--white);
+    padding: 2.5rem 5vw;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    border-top: 3px solid var(--rust);
+  }
+  .stat-item { text-align: center; }
+  .stat-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 3rem;
+    color: var(--gold);
+    letter-spacing: 0.04em;
+    line-height: 1;
+  }
+  .stat-label { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: #aaa; margin-top: 0.3rem; }
+
+  /* ── HOW IT WORKS ── */
+  .section {
+    padding: 6rem 5vw;
+  }
+  .section-header { margin-bottom: 3.5rem; }
+  .section-eyebrow {
+    font-size: 0.7rem; font-weight: 700; letter-spacing: 0.22em;
+    text-transform: uppercase; color: var(--rust);
+    margin-bottom: 0.8rem;
+  }
+  .section-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(2.2rem, 4vw, 3.5rem);
+    letter-spacing: 0.02em;
+    line-height: 1;
+  }
+  .section-desc { font-size: 0.95rem; color: #555; line-height: 1.7; max-width: 560px; margin-top: 0.8rem; }
+
+  .how-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  .how-step {
+    padding: 2.5rem 2rem;
+    border-right: 1px solid var(--border);
+    position: relative;
+    transition: background 0.25s;
+  }
+  .how-step:last-child { border-right: none; }
+  .how-step:hover { background: var(--cream); }
+
+  .how-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 4rem;
+    color: var(--border);
+    line-height: 1;
+    margin-bottom: 1rem;
+    transition: color 0.25s;
+  }
+  .how-step:hover .how-num { color: var(--rust); }
+
+  .how-icon { font-size: 1.8rem; margin-bottom: 0.8rem; }
+  .how-title { font-size: 0.92rem; font-weight: 700; margin-bottom: 0.5rem; }
+  .how-desc { font-size: 0.8rem; color: #666; line-height: 1.6; }
+
+  /* ── PRODUCTS ── */
+  .products-section { background: var(--cream); }
+
+  .products-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  .product-card {
+    background: var(--white);
+    padding: 2rem 1.5rem;
+    cursor: pointer;
+    transition: all 0.25s;
+    position: relative;
+    text-decoration: none;
+    color: var(--ink);
+  }
+  .product-card:hover { background: var(--ink); }
+  .product-card:hover .product-icon,
+  .product-card:hover .product-name,
+  .product-card:hover .product-desc { color: var(--white); }
+  .product-card:hover .product-arrow { opacity: 1; transform: translateX(0); color: var(--rust); }
+
+  .product-icon { font-size: 2.2rem; margin-bottom: 0.8rem; display: block; transition: color 0.25s; }
+  .product-name { font-size: 0.88rem; font-weight: 700; margin-bottom: 0.4rem; transition: color 0.25s; }
+  .product-desc { font-size: 0.73rem; color: #777; line-height: 1.5; transition: color 0.25s; }
+  .product-arrow {
+    position: absolute;
+    bottom: 1.2rem; right: 1.2rem;
+    font-size: 1rem;
+    opacity: 0;
+    transform: translateX(-6px);
+    transition: all 0.25s;
+  }
+
+  /* ── ORDER FORM ── */
+  .order-section { background: var(--white); }
+
+  .order-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 5rem;
+    align-items: start;
+  }
+
+  .order-info h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(2.5rem, 4vw, 4rem);
+    letter-spacing: 0.02em;
+    line-height: 1;
+    margin-bottom: 1.2rem;
+  }
+
+  .order-info p { font-size: 0.9rem; color: #555; line-height: 1.7; margin-bottom: 2rem; }
+
+  .info-list { list-style: none; display: flex; flex-direction: column; gap: 0.8rem; }
+  .info-list li {
+    display: flex; align-items: flex-start; gap: 0.8rem;
+    font-size: 0.85rem; color: #444; line-height: 1.5;
+  }
+  .info-list li::before {
+    content: '✓';
+    color: var(--sage);
+    font-weight: 700;
+    font-size: 0.9rem;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  /* FORM */
+  .order-form {
+    background: var(--cream);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 2.5rem;
+  }
+
+  .form-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.8rem;
+    letter-spacing: 0.04em;
+    margin-bottom: 0.3rem;
+  }
+  .form-subtitle { font-size: 0.8rem; color: #777; margin-bottom: 2rem; }
+
+  .form-group { margin-bottom: 1.2rem; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+  label {
+    display: block;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #555;
+    margin-bottom: 0.4rem;
+  }
+
+  input, select, textarea {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 1.5px solid rgba(13,13,13,0.15);
+    border-radius: 2px;
+    background: var(--white);
+    font-family: 'Manrope', sans-serif;
+    font-size: 0.88rem;
+    color: var(--ink);
+    transition: border-color 0.2s, box-shadow 0.2s;
+    outline: none;
+    -webkit-appearance: none;
+  }
+  input:focus, select:focus, textarea:focus {
+    border-color: var(--rust);
+    box-shadow: 0 0 0 3px rgba(196,68,26,0.08);
+  }
+  textarea { resize: vertical; min-height: 100px; }
+
+  .form-note {
+    background: rgba(196,68,26,0.06);
+    border-left: 3px solid var(--rust);
+    padding: 0.8rem 1rem;
+    font-size: 0.78rem;
+    color: #555;
+    line-height: 1.5;
+    border-radius: 0 2px 2px 0;
+    margin-bottom: 1.5rem;
+  }
+
+  .btn-submit {
+    width: 100%;
+    padding: 1rem;
+    background: var(--rust);
+    color: var(--white);
+    border: none;
+    border-radius: 2px;
+    font-family: 'Manrope', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.25s, transform 0.15s;
+  }
+  .btn-submit:hover { background: #a83516; }
+  .btn-submit:active { transform: scale(0.99); }
+
+  /* SUCCESS */
+  .success-msg {
+    display: none;
+    background: var(--sage);
+    color: var(--white);
+    padding: 1.2rem 1.5rem;
+    border-radius: 2px;
+    font-size: 0.88rem;
+    font-weight: 600;
+    text-align: center;
+    margin-top: 1rem;
+  }
+  .success-msg.show { display: block; animation: fadeIn 0.4s ease; }
+
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+  /* ── WHY US ── */
+  .why-section { background: var(--ink); color: var(--white); }
+
+  .why-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 4px;
+    overflow: hidden;
+    margin-top: 3rem;
+  }
+
+  .why-card {
+    background: var(--ink);
+    padding: 2.5rem 2rem;
+    transition: background 0.25s;
+  }
+  .why-card:hover { background: #1a1a1a; }
+
+  .why-icon { font-size: 2rem; margin-bottom: 1rem; }
+  .why-title { font-size: 0.92rem; font-weight: 700; margin-bottom: 0.6rem; color: var(--gold); }
+  .why-desc { font-size: 0.82rem; color: #aaa; line-height: 1.7; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #080808;
+    color: #888;
+    padding: 3rem 5vw;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: 2rem;
+    border-top: 1px solid #1a1a1a;
+  }
+
+  .footer-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.6rem;
+    letter-spacing: 0.08em;
+    color: var(--white);
+    text-decoration: none;
+  }
+  .footer-logo span { color: var(--rust); }
+  .footer-tagline { font-size: 0.78rem; margin-top: 0.3rem; }
+  .footer-right { font-size: 0.76rem; text-align: right; line-height: 1.8; }
+
+  /* ── ANIMATIONS ── */
+  .fade-up {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.65s ease, transform 0.65s ease;
+  }
+  .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+  /* ── MODAL ── */
+  .modal-overlay {
+    position: fixed; inset: 0; z-index: 999;
+    background: rgba(0,0,0,0.65);
+    display: flex; align-items: center; justify-content: center;
+    padding: 2rem;
+    opacity: 0; pointer-events: none;
+    transition: opacity 0.3s;
+  }
+  .modal-overlay.open { opacity: 1; pointer-events: all; }
+
+  .modal-box {
+    background: var(--white);
+    border-radius: 4px;
+    padding: 2.5rem;
+    max-width: 480px;
+    width: 100%;
+    transform: scale(0.92);
+    transition: transform 0.3s;
+  }
+  .modal-overlay.open .modal-box { transform: scale(1); }
+
+  .modal-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+    letter-spacing: 0.03em;
+  }
+  .modal-close {
+    position: absolute;
+    top: 1rem; right: 1.2rem;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #aaa;
+    background: none;
+    border: none;
+    line-height: 1;
+  }
+  .modal-box { position: relative; }
+
+  /* ── TALEP MODALI ── */
+  .talep-modal {
+    position: fixed; inset: 0; z-index: 500;
+    background: rgba(13,13,13,0.7);
+    display: flex; align-items: center; justify-content: center;
+    padding: 1.5rem;
+    opacity: 0; pointer-events: none;
+    transition: opacity 0.3s ease;
+    backdrop-filter: blur(4px);
+  }
+  .talep-modal.open {
+    opacity: 1; pointer-events: all;
+  }
+
+  .talep-modal-box {
+    background: var(--white);
+    border-radius: 6px;
+    padding: 2.2rem 2rem 2rem;
+    width: 100%;
+    max-width: 560px;
+    max-height: 92vh;
+    overflow-y: auto;
+    position: relative;
+    transform: translateY(24px) scale(0.97);
+    transition: transform 0.35s cubic-bezier(0.34,1.56,0.64,1);
+    box-shadow: 0 32px 80px rgba(0,0,0,0.25);
+  }
+  .talep-modal.open .talep-modal-box {
+    transform: translateY(0) scale(1);
+  }
+
+  .talep-modal-close {
+    position: absolute; top: 1rem; right: 1rem;
+    background: var(--cream); border: none; cursor: pointer;
+    width: 32px; height: 32px; border-radius: 50%;
+    font-size: 0.85rem; color: #666;
+    display: flex; align-items: center; justify-content: center;
+    transition: background 0.2s, color 0.2s;
+    z-index: 10;
+  }
+  .talep-modal-close:hover { background: var(--rust); color: var(--white); }
+
+  .talep-modal-header {
+    display: flex; align-items: center; gap: 1rem;
+    margin-bottom: 1.2rem;
+    padding-bottom: 1.2rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .talep-modal-icon {
+    font-size: 2.5rem;
+    width: 56px; height: 56px;
+    background: var(--cream);
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .talep-modal-eyebrow {
+    font-size: 0.68rem; font-weight: 700;
+    letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--rust); margin-bottom: 0.2rem;
+  }
+  .talep-modal-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.6rem; letter-spacing: 0.03em; line-height: 1;
+    color: var(--ink);
+  }
+
+  .talep-modal-note {
+    background: rgba(196,68,26,0.06);
+    border-left: 3px solid var(--rust);
+    padding: 0.7rem 0.9rem;
+    font-size: 0.78rem; color: #555; line-height: 1.5;
+    border-radius: 0 2px 2px 0;
+    margin-bottom: 1.4rem;
+  }
+
+  @media (max-width: 600px) {
+    .talep-modal-box { padding: 1.8rem 1.2rem 1.5rem; }
+    .talep-modal-title { font-size: 1.3rem; }
+  }
+
+  /* ── HAMBURGEr BUTTON ── */
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 40px; height: 40px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    z-index: 200;
+  }
+  .hamburger span {
+    display: block;
+    width: 100%; height: 2px;
+    background: var(--ink);
+    border-radius: 2px;
+    transition: transform 0.3s, opacity 0.3s, width 0.3s;
+    transform-origin: center;
+  }
+  .hamburger.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .hamburger.active span:nth-child(2) { opacity: 0; width: 0; }
+  .hamburger.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  /* ── MOBILE DRAWER ── */
+  .mobile-menu {
+    display: none;
+    position: fixed;
+    top: 70px; left: 0; right: 0;
+    background: rgba(250,250,248,0.98);
+    backdrop-filter: blur(16px);
+    border-bottom: 2px solid var(--rust);
+    z-index: 99;
+    padding: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s cubic-bezier(0.4,0,0.2,1), padding 0.3s;
+  }
+  .mobile-menu.open {
+    max-height: 600px;
+    padding: 1rem 0 1.5rem;
+  }
+
+  .mobile-nav-links {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .mobile-nav-links li a {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 5vw;
+    font-size: 0.88rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink);
+    text-decoration: none;
+    border-bottom: 1px solid var(--border);
+    transition: background 0.2s, color 0.2s;
+  }
+  .mobile-nav-links li a:hover { background: var(--cream); color: var(--rust); }
+  .mobile-nav-links li a .arrow { font-size: 0.7rem; opacity: 0.4; }
+
+  .mobile-nav-links li:last-child a {
+    background: var(--rust);
+    color: var(--white);
+    border-bottom: none;
+    margin: 1rem 5vw 0;
+    border-radius: 2px;
+    justify-content: center;
+  }
+  .mobile-nav-links li:last-child a:hover { background: #a83516; }
+
+  .mobile-contact-strip {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 5vw 0;
+    font-size: 0.78rem;
+    color: #777;
+  }
+  .mobile-contact-strip a { color: var(--rust); text-decoration: none; font-weight: 600; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 1024px) {
+    .hero { grid-template-columns: 1fr; padding-top: 110px; }
+    .hero::before { display: none; }
+    .hero-visual { display: none; }
+    .products-grid { grid-template-columns: repeat(3, 1fr); }
+    .how-grid { grid-template-columns: 1fr 1fr; }
+    .how-step { border-right: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .how-step:nth-child(2n) { border-right: none; }
+    .order-wrapper { grid-template-columns: 1fr; }
+    .why-grid { grid-template-columns: 1fr 1fr; }
+    .stats-strip { grid-template-columns: repeat(2,1fr); }
+  }
+
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+    .mobile-menu { display: block; }
+    .about-grid { grid-template-columns: 1fr !important; gap: 2rem !important; }
+    .contact-grid { grid-template-columns: 1fr !important; }
+    .contact-grid > div { border-left: none !important; border-right: none !important; border-bottom: 1px solid var(--border); }
+    .products-grid { grid-template-columns: 1fr 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+    .why-grid { grid-template-columns: 1fr; }
+    footer { grid-template-columns: 1fr; }
+    .footer-right { text-align: left; }
+    .stats-strip { grid-template-columns: 1fr 1fr; }
+    .vm-grid { grid-template-columns: 1fr !important; }
+    .values-grid { grid-template-columns: 1fr 1fr !important; }
+  }
+
+  @media (max-width: 480px) {
+    .values-grid { grid-template-columns: 1fr !important; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#"><span>PRO</span>FASON</a>
+  <ul class="nav-links">
+    <li><a href="#nasil-calisir">Nasıl Çalışır</a></li>
+    <li><a href="#urunler">Ürünler</a></li>
+    <li><a href="#neden-biz">Neden Biz</a></li>
+    <li><a href="#hakkimizda">Hakkımızda</a></li>
+    <li><a href="#iletisim">İletişim</a></li>
+    <li><a href="#talep-formu" class="nav-cta">Talep Oluştur</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Menü aç/kapat">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+</nav>
+
+<!-- MOBİL MENÜ DRAWER -->
+<div class="mobile-menu" id="mobileMenu">
+  <ul class="mobile-nav-links">
+    <li><a href="#nasil-calisir" class="mobile-link">Nasıl Çalışır <span class="arrow">▶</span></a></li>
+    <li><a href="#urunler" class="mobile-link">Ürünler <span class="arrow">▶</span></a></li>
+    <li><a href="#neden-biz" class="mobile-link">Neden Biz <span class="arrow">▶</span></a></li>
+    <li><a href="#hakkimizda" class="mobile-link">Hakkımızda <span class="arrow">▶</span></a></li>
+    <li><a href="#iletisim" class="mobile-link">İletişim <span class="arrow">▶</span></a></li>
+    <li><a href="#talep-formu" class="mobile-link">✉ Talep Oluştur</a></li>
+  </ul>
+  <div class="mobile-contact-strip">
+    📧 <a href="/cdn-cgi/l/email-protection#9af3f4fcf5daeae8f5fcfbe9f5f4b4f9f5f7b4eee8"><span class="__cf_email__" data-cfemail="274e4941486757554841465448490944484a095355">[email&#160;protected]</span></a>
+    &nbsp;|&nbsp;
+    📞 <a href="tel:+90">Bizi Arayın</a>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-text">
+    <p class="hero-eyebrow">Türkiye'nin Fason Üretim Köprüsü</p>
+    <h1 class="hero-title">
+      FABRİKADAN<br>
+      <span class="accent">SİZE</span><br>
+      DOĞRUDAN
+    </h1>
+    <p class="hero-sub">
+      İhtiyacınız olan ürünü talep edin — fabrikaya doğrudan iletelim. Teklif size gelsin, karar sizin olsun. Stok yok, depo yok, karmaşıklık yok.
+    </p>
+    <div class="hero-actions">
+      <a href="#talep-formu" class="btn-primary">Hemen Talep Oluştur</a>
+      <a href="#nasil-calisir" class="btn-outline">Nasıl Çalışır?</a>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="hero-grid">
+      <div class="hero-card"><div class="icon">🧴</div><div class="label">Çamaşır Suyu</div></div>
+      <div class="hero-card"><div class="icon">🧻</div><div class="label">Tuvalet Kağıdı</div></div>
+      <div class="hero-card"><div class="icon">🧼</div><div class="label">El Sabunu</div></div>
+      <div class="hero-card"><div class="icon">☕</div><div class="label">Karton Bardak</div></div>
+      <div class="hero-card"><div class="icon">📦</div><div class="label">Karton Koli</div></div>
+      <div class="hero-card"><div class="icon">🧊</div><div class="label">Strafor</div></div>
+      <div class="hero-card"><div class="icon">🔖</div><div class="label">Bant</div></div>
+      <div class="hero-card"><div class="icon">🌀</div><div class="label">Streç Film</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-strip">
+  <div class="stat-item">
+    <div class="stat-num">10+</div>
+    <div class="stat-label">Ürün Kategorisi</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">48s</div>
+    <div class="stat-label">Teklif Dönüş Süresi</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">%100</div>
+    <div class="stat-label">Fason Üretim</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">0₺</div>
+    <div class="stat-label">Talep Ücreti</div>
+  </div>
+</div>
+
+<!-- HOW IT WORKS -->
+<section class="section" id="nasil-calisir">
+  <div class="section-header fade-up">
+    <p class="section-eyebrow">Süreç</p>
+    <h2 class="section-title">4 ADIMDA<br>FASON ÜRETİM</h2>
+    <p class="section-desc">Siz formu doldurun, gerisini biz halledelim. Fabrikayla tek tek uğraşmanıza gerek yok.</p>
+  </div>
+  <div class="how-grid fade-up">
+    <div class="how-step">
+      <div class="how-num">01</div>
+      <div class="how-icon">📋</div>
+      <div class="how-title">Talebinizi Girin</div>
+      <div class="how-desc">Ürün, miktar, özellik ve teslim tarihi bilgilerinizi forma girin. 2 dakika yeterli.</div>
+    </div>
+    <div class="how-step">
+      <div class="how-num">02</div>
+      <div class="how-icon">⚡</div>
+      <div class="how-title">Fabrikalara İletelim</div>
+      <div class="how-desc">Talebiniz anında ilgili üretici firmalara otomatik olarak iletilir. Siz bekleyin.</div>
+    </div>
+    <div class="how-step">
+      <div class="how-num">03</div>
+      <div class="how-icon">📩</div>
+      <div class="how-title">Teklif Mailinize Gelir</div>
+      <div class="how-desc">Fabrika cevap verdiğinde teklif, fiyat ve teslimat bilgisi doğrudan mail adresinize ulaşır.</div>
+    </div>
+    <div class="how-step">
+      <div class="how-num">04</div>
+      <div class="how-icon">✅</div>
+      <div class="how-title">Siz Karar Verin</div>
+      <div class="how-desc">Teklifi değerlendirin, onaylayın. Üretim ve teslimat süreci başlasın.</div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section class="section products-section" id="urunler">
+  <div class="section-header fade-up">
+    <p class="section-eyebrow">Ürün Kataloğu</p>
+    <h2 class="section-title">TALEP EDEBİLECEĞİNİZ<br>ÜRÜNLER</h2>
+    <p class="section-desc">Son kullanma tarihi olmayan, yüksek talep gören 10 temel ürün kategorisinde fason üretim.</p>
+  </div>
+  <div class="products-grid fade-up">
+    <a href="#talep-formu" class="product-card" data-product="Çamaşır Suyu">
+      <span class="product-icon">🧴</span>
+      <div class="product-name">Çamaşır Suyu</div>
+      <div class="product-desc">Endüstriyel & ev tipi, özel marka seçeneğiyle</div>
+      <span class="product-arrow">→</span>
+    </a>
+    <a href="#talep-formu" class="product-card" data-product="Tuvalet Kağıdı">
+      <span class="product-icon">🧻</span>
+      <div class="product-name">Tuvalet Kağıdı</div>
+      <div class="product-desc">Tek–çok katlı, jumbo rulo veya standart</div>
+      <span class="product-arrow">→</span>
+    </a>
+    <a href="#talep-formu" class="product-card" data-product="El Sabunu (Sıvı)">
+      <span class="product-icon">🧼</span>
+      <div class="product-name">El Sabunu</div>
+      <div class="product-desc">Sıvı, antibakteriyel ve özel formülasyonlar</div>
+      <span class="product-arrow">→</span>
+    </a>
+    <a href="#talep-formu" class="product-card" data-product="El için Kağıt Havlu">
+      <span class="product-icon">🤲</span>
+      <div class="product-name">Kağıt Havlu</div>
+      <div class="product-desc">Dispenser tipi Z–N katlama ve rulo çeşitler</div>
+      <span class="product-arrow">→</span>
+    </a>
+    <a href="#talep-formu" class="product-card" data-product="Karton Bardak">
+      <span class="product-icon">☕</span>
+      <div class="product-name">Karton Bardak</div>
+      <div class="product-desc">Sıcak–soğuk, 4oz–16oz, baskılı veya sade</div>
+      <span class="product-arrow">→</span>
+    </a>
+    <a href="#talep-formu" class="product-card" data-product="Plastik Bardak">
+      <span class="product-icon">🥤</span>
+      <div class="product-name">Plastik Bardak</div>
+      <div class="product-desc">Şeffaf soğuk içecek bardakları, kapaklar dahil</div>
+      <span class="product-arrow">→</span>
+    </a>
+    <a href="#talep-formu" class="product-card" data-product="Karton (Koli/Kutu)">
+      <span class="product-icon">📦</span>
+      <div class="product-name">Karton / Koli</div>
+      <div class="product-desc">Oluklu mukavva, ofset baskılı veya düz</div>
+      <span class="product-arrow">→</span>
+    </a>
+    <a href="#talep-formu" class="product-card" data-product="Strafor (EPS Köpük)">
+      <span class="product-icon">🧊</span>
+      <div class="product-name">Strafor</div>
+      <div class="product-desc">EPS ambalaj, levha, özel kesim şekiller</div>
+      <span class="product-arrow">→</span>
+    </a>
+    <a href="#talep-formu" class="product-card" data-product="Bant (Koli/OPP)">
+      <span class="product-icon">🔖</span>
+      <div class="product-name">Bant</div>
+      <div class="product-desc">Koli bantı, maskeleme, kraft ve çift taraflı</div>
+      <span class="product-arrow">→</span>
+    </a>
+    <a href="#talep-formu" class="product-card" data-product="Streç Film">
+      <span class="product-icon">🌀</span>
+      <div class="product-name">Streç Film</div>
+      <div class="product-desc">Palet streç, el streç, makine tipi rulolar</div>
+      <span class="product-arrow">→</span>
+    </a>
+  </div>
+</section>
+
+<!-- ORDER FORM -->
+<section class="section order-section" id="talep-formu">
+  <div class="order-wrapper">
+    <div class="order-info fade-up">
+      <p class="section-eyebrow">Talep Formu</p>
+      <h2>TALEBİNİZİ<br>OLUŞTURUN</h2>
+      <p>Formu doldurun — talebiniz anında ilgili üreticilere iletilir. Teklif, fiyat ve teslimat bilgisi doğrudan mail adresinize gelir.</p>
+      <ul class="info-list">
+        <li>Fabrikayla tek tek iletişime geçmenize gerek yok</li>
+        <li>48 saat içinde teklif alırsınız</li>
+        <li>Özel marka (private label) üretim talep edebilirsiniz</li>
+        <li>Minimum sipariş miktarı ürüne göre değişir</li>
+        <li>Teklif almak tamamen ücretsizdir</li>
+        <li>Bilgileriniz sadece üretici firmalarla paylaşılır</li>
+      </ul>
+    </div>
+
+    <div class="order-form fade-up">
+      <div class="form-title">TALEBİNİZİ İLETİN</div>
+      <div class="form-subtitle">Teklif doğrudan mail adresinize iletilecektir</div>
+
+      <form id="orderForm">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="ad">Ad Soyad *</label>
+            <input type="text" id="ad" name="ad" placeholder="Yiğit Demir" required>
+          </div>
+          <div class="form-group">
+            <label for="sirket">Firma Adı</label>
+            <input type="text" id="sirket" name="sirket" placeholder="Firma Adı (varsa)">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="email">E-posta *</label>
+            <input type="email" id="email" name="email" placeholder="siz@firma.com" required>
+          </div>
+          <div class="form-group">
+            <label for="telefon">Telefon *</label>
+            <input type="tel" id="telefon" name="telefon" placeholder="05xx xxx xx xx" required>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="urun">Ürün Kategorisi *</label>
+          <select id="urun" name="urun" required>
+            <option value="">— Ürün seçin —</option>
+            <option>🧴 Çamaşır Suyu</option>
+            <option>🧻 Tuvalet Kağıdı</option>
+            <option>🧼 El Sabunu (Sıvı)</option>
+            <option>🤲 El için Kağıt Havlu</option>
+            <option>☕ Karton Bardak</option>
+            <option>🥤 Plastik Bardak</option>
+            <option>📦 Karton / Koli / Kutu</option>
+            <option>🧊 Strafor (EPS Köpük)</option>
+            <option>🔖 Bant (Koli/OPP)</option>
+            <option>🌀 Streç Film</option>
+          </select>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="miktar">Tahmini Miktar / Adet *</label>
+            <input type="text" id="miktar" name="miktar" placeholder="Örn: 5.000 adet / 100 koli" required>
+          </div>
+          <div class="form-group">
+            <label for="teslim">İstenen Teslim Tarihi</label>
+            <input type="date" id="teslim" name="teslim">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="ozel">Özel İstekler / Teknik Detaylar</label>
+          <textarea id="ozel" name="ozel" placeholder="Baskı, renk, ebat, özel marka (private label) talebi, sertifika ihtiyacı vs. varsa buraya yazın..."></textarea>
+        </div>
+
+        <div class="form-note">
+          📌 Talebiniz gönderildiğinde ilgili üreticilere iletilir. Fabrika teklif hazırladığında teklif, fiyat ve teslimat bilgisi <strong>doğrudan e-posta adresinize</strong> ulaşır.
+        </div>
+
+        <button type="submit" class="btn-submit">TALEBİ GÖNDER — ÜRETİCİYE İLET →</button>
+      </form>
+
+      <div class="success-msg" id="successMsg">
+        ✅ Talebiniz alındı! Üreticiye iletildi. 48 saat içinde teklifiniz mail adresinize ulaşacak.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section class="section why-section" id="neden-biz">
+  <div class="section-header fade-up">
+    <p class="section-eyebrow" style="color: var(--gold);">Neden ProFason</p>
+    <h2 class="section-title" style="color: var(--white);">KURUMSAL HİZMET,<br>YEREL ÜRETİM GÜCÜ</h2>
+    <p class="section-desc" style="color:#bbb; margin-top:0.8rem;">Türkiye'nin onlarca köklü fabrikasıyla kurduğumuz ağ sayesinde, büyük markaların sahip olduğu tedarik gücünü sizin için erişilebilir hale getiriyoruz.</p>
+  </div>
+  <div class="why-grid fade-up">
+    <div class="why-card">
+      <div class="why-icon">🏭</div>
+      <div class="why-title">Doğrulanmış Fabrika Ağı</div>
+      <div class="why-desc">Çalıştığımız her üretici firma, Türkiye'nin kayıtlı sanayi rehberinden doğrulanmıştır. Rastgele tedarikçi değil, güvenilir fabrikalar.</div>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">🤝</div>
+      <div class="why-title">Tek Muhatap, Tam Hizmet</div>
+      <div class="why-desc">Farklı ürünler için farklı fabrikalarla tek tek iletişime geçmenize gerek yok. Bütün koordinasyonu biz üstleniriz.</div>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">🏷️</div>
+      <div class="why-title">Private Label Üretim</div>
+      <div class="why-desc">Kendi markanızla, kendi ambalajınızla üretim yaptırın. Küçük miktarlardan başlayarak markanızı hayata geçirin.</div>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">⚡</div>
+      <div class="why-title">48 Saat Teklif Garantisi</div>
+      <div class="why-desc">Talebinizi ilettikten sonra en geç 48 saat içinde fiyat, miktar ve teslimat teklifi e-posta adresinizde olur.</div>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">📦</div>
+      <div class="why-title">Sipariş Bazlı, Stoksuz Model</div>
+      <div class="why-desc">Depo kirasına, stok riskine son. İhtiyacınız kadar ürettirin — gereksiz maliyet taşımayın.</div>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">🔒</div>
+      <div class="why-title">Gizlilik ve Güven</div>
+      <div class="why-desc">Bilgileriniz yalnızca ilgili üreticiyle paylaşılır. Hiçbir aşamada üçüncü taraflarla paylaşılmaz.</div>
+    </div>
+  </div>
+
+  <!-- Ayırıcı alıntı -->
+  <div class="fade-up" style="margin-top:3.5rem; border-top:1px solid rgba(255,255,255,0.08); padding-top:3rem; display:grid; grid-template-columns:1fr 1fr; gap:2px; background:rgba(255,255,255,0.05); border-radius:4px; overflow:hidden;">
+    <div style="padding:2rem 2.5rem; background:rgba(255,255,255,0.03);">
+      <div style="font-family:'Bebas Neue',sans-serif; font-size:0.7rem; letter-spacing:0.2em; color:var(--gold); margin-bottom:0.8rem;">KİMLER KULLANIR</div>
+      <ul style="list-style:none; display:flex; flex-direction:column; gap:0.6rem;">
+        <li style="font-size:0.85rem; color:#ccc; display:flex; gap:0.6rem;"><span style="color:var(--rust);">—</span> Market zincirleri ve toptan satıcılar</li>
+        <li style="font-size:0.85rem; color:#ccc; display:flex; gap:0.6rem;"><span style="color:var(--rust);">—</span> Otel, hastane ve kurumsal tedarik ekipleri</li>
+        <li style="font-size:0.85rem; color:#ccc; display:flex; gap:0.6rem;"><span style="color:var(--rust);">—</span> E-ticaret satıcıları ve girişimciler</li>
+        <li style="font-size:0.85rem; color:#ccc; display:flex; gap:0.6rem;"><span style="color:var(--rust);">—</span> Kendi markasını kurmak isteyen KOBİ'ler</li>
+      </ul>
+    </div>
+    <div style="padding:2rem 2.5rem; background:rgba(255,255,255,0.03);">
+      <div style="font-family:'Bebas Neue',sans-serif; font-size:0.7rem; letter-spacing:0.2em; color:var(--gold); margin-bottom:0.8rem;">HİZMET KAPSAMI</div>
+      <ul style="list-style:none; display:flex; flex-direction:column; gap:0.6rem;">
+        <li style="font-size:0.85rem; color:#ccc; display:flex; gap:0.6rem;"><span style="color:var(--rust);">—</span> Talep yönetimi ve fabrika eşleştirme</li>
+        <li style="font-size:0.85rem; color:#ccc; display:flex; gap:0.6rem;"><span style="color:var(--rust);">—</span> Teklif iletimi ve fiyat karşılaştırma desteği</li>
+        <li style="font-size:0.85rem; color:#ccc; display:flex; gap:0.6rem;"><span style="color:var(--rust);">—</span> Private label ambalaj koordinasyonu</li>
+        <li style="font-size:0.85rem; color:#ccc; display:flex; gap:0.6rem;"><span style="color:var(--rust);">—</span> Tekrarlayan siparişlerde süreç takibi</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- HAKKIMIZDA -->
+<section class="section" id="hakkimizda" style="background: var(--cream);">
+
+  <!-- Üst başlık -->
+  <div class="section-header fade-up" style="max-width:620px;">
+    <p class="section-eyebrow">Hakkımızda</p>
+    <h2 class="section-title" style="margin-bottom:1rem;">YEREL FABRİKALARIN<br>KURUMSAL SESİ</h2>
+    <p style="font-size:0.95rem; color:#555; line-height:1.8;">
+      ProFason, Türkiye'nin köklü üretici fabrikalarıyla alıcılar arasında köprü kuran bir tedarik platformudur. Küçük girişimciden kurumsal alıcıya kadar herkese aynı kalitede erişim imkânı sunuyoruz.
+    </p>
+  </div>
+
+  <!-- Vizyon & Misyon -->
+  <div class="fade-up" style="display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; margin-bottom:3rem;" class="vm-grid">
+    <div style="background:var(--ink); color:var(--white); border-radius:4px; padding:2.2rem 2rem;">
+      <div style="font-family:'Bebas Neue',sans-serif; font-size:0.68rem; letter-spacing:0.22em; color:var(--gold); margin-bottom:1rem;">VİZYONUMUZ</div>
+      <p style="font-size:1.05rem; font-weight:600; line-height:1.6; margin-bottom:0.8rem; color:var(--white);">
+        Türkiye'nin üretim gücünü, dünyanın her alıcısına ulaştırmak.
+      </p>
+      <p style="font-size:0.83rem; color:#aaa; line-height:1.7;">
+        Anadolu'nun sanayi birikimi ve üretim kapasitesi, yalnızca büyük şirketlerin tekelinde kalmamalı. Doğru dijital altyapıyla bu gücü herkesin kullanımına açmak istiyoruz.
+      </p>
+    </div>
+    <div style="background:var(--white); border:1.5px solid var(--ink); border-radius:4px; padding:2.2rem 2rem;">
+      <div style="font-family:'Bebas Neue',sans-serif; font-size:0.68rem; letter-spacing:0.22em; color:var(--rust); margin-bottom:1rem;">MİSYONUMUZ</div>
+      <p style="font-size:1.05rem; font-weight:600; line-height:1.6; margin-bottom:0.8rem; color:var(--ink);">
+        Üretim sürecindeki karmaşıklığı ortadan kaldırmak.
+      </p>
+      <p style="font-size:0.83rem; color:#555; line-height:1.7;">
+        Müşterilerimizin fabrikalarla tek tek ilişki kurmasına, fiyat araştırması yapmasına gerek kalmadan; en uygun üreticiye en hızlı şekilde ulaşmasını sağlamak — bu bizim işimiz.
+      </p>
+    </div>
+  </div>
+
+  <!-- Değerler -->
+  <div class="fade-up">
+    <div style="font-family:'Bebas Neue',sans-serif; font-size:0.68rem; letter-spacing:0.22em; color:#999; margin-bottom:1.2rem;">TEMEL DEĞERLERİMİZ</div>
+    <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--border); border:1px solid var(--border); border-radius:4px; overflow:hidden;" class="values-grid">
+      <div style="background:var(--white); padding:1.6rem 1.4rem; transition:background 0.2s;" onmouseover="this.style.background='#f0ebe0'" onmouseout="this.style.background='var(--white)'">
+        <div style="font-size:1.5rem; margin-bottom:0.6rem;">🎯</div>
+        <div style="font-size:0.82rem; font-weight:700; margin-bottom:0.4rem;">Odak</div>
+        <div style="font-size:0.78rem; color:#666; line-height:1.5;">Son kullanma tarihi olmayan, her işletmenin ihtiyaç duyduğu temel ürünlere odaklanıyoruz.</div>
+      </div>
+      <div style="background:var(--white); padding:1.6rem 1.4rem; transition:background 0.2s;" onmouseover="this.style.background='#f0ebe0'" onmouseout="this.style.background='var(--white)'">
+        <div style="font-size:1.5rem; margin-bottom:0.6rem;">🤝</div>
+        <div style="font-size:0.82rem; font-weight:700; margin-bottom:0.4rem;">Güven</div>
+        <div style="font-size:0.78rem; color:#666; line-height:1.5;">Çalıştığımız fabrikaları yerinde doğruladık. Müşterilerimize hep doğru bilgi veriyoruz.</div>
+      </div>
+      <div style="background:var(--white); padding:1.6rem 1.4rem; transition:background 0.2s;" onmouseover="this.style.background='#f0ebe0'" onmouseout="this.style.background='var(--white)'">
+        <div style="font-size:1.5rem; margin-bottom:0.6rem;">⚡</div>
+        <div style="font-size:0.82rem; font-weight:700; margin-bottom:0.4rem;">Hız</div>
+        <div style="font-size:0.78rem; color:#666; line-height:1.5;">Talebi aldığımız anda harekete geçiyoruz. 48 saat içinde teklif, sözümüzdür.</div>
+      </div>
+      <div style="background:var(--white); padding:1.6rem 1.4rem; transition:background 0.2s;" onmouseover="this.style.background='#f0ebe0'" onmouseout="this.style.background='var(--white)'">
+        <div style="font-size:1.5rem; margin-bottom:0.6rem;">🌱</div>
+        <div style="font-size:0.82rem; font-weight:700; margin-bottom:0.4rem;">Sürdürülebilirlik</div>
+        <div style="font-size:0.78rem; color:#666; line-height:1.5;">Yerli üretimi destekleyerek yerel istihdama ve ekonomiye katkı sağlıyoruz.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Ayırıcı satır istatistik -->
+  <div class="fade-up" style="display:grid; grid-template-columns:repeat(3,1fr); gap:0; margin-top:3rem; border:1px solid var(--border); border-radius:4px; overflow:hidden; background:var(--white);">
+    <div style="padding:2rem; text-align:center; border-right:1px solid var(--border);">
+      <div style="font-family:'Bebas Neue',sans-serif; font-size:3rem; color:var(--rust); line-height:1;">10+</div>
+      <div style="font-size:0.72rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:#888; margin-top:0.3rem;">Ürün Kategorisi</div>
+    </div>
+    <div style="padding:2rem; text-align:center; border-right:1px solid var(--border);">
+      <div style="font-family:'Bebas Neue',sans-serif; font-size:3rem; color:var(--rust); line-height:1;">50+</div>
+      <div style="font-size:0.72rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:#888; margin-top:0.3rem;">Tedarikçi Fabrika</div>
+    </div>
+    <div style="padding:2rem; text-align:center;">
+      <div style="font-family:'Bebas Neue',sans-serif; font-size:3rem; color:var(--rust); line-height:1;">%100</div>
+      <div style="font-size:0.72rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:#888; margin-top:0.3rem;">Türkiye Yerli Üretim</div>
+    </div>
+  </div>
+
+</section>
+
+<!-- İLETİŞİM -->
+<section class="section" id="iletisim" style="background:var(--white);">
+  <div class="section-header fade-up" style="text-align:center; max-width:600px; margin:0 auto 3rem;">
+    <p class="section-eyebrow">İletişim</p>
+    <h2 class="section-title">BİZE ULAŞIN</h2>
+    <p class="section-desc" style="margin:0 auto;">Soru, öneri veya iş birliği için — her zaman buradayız.</p>
+  </div>
+  <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--border); border:1px solid var(--border); border-radius:4px; overflow:hidden;" class="contact-grid fade-up">
+    <div style="background:var(--white); padding:2.5rem 2rem; text-align:center; transition:background 0.2s;" onmouseover="this.style.background='var(--cream)'" onmouseout="this.style.background='var(--white)'">
+      <div style="font-size:2rem; margin-bottom:0.8rem;">📧</div>
+      <div style="font-size:0.75rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:#777; margin-bottom:0.5rem;">E-Posta</div>
+      <a href="/cdn-cgi/l/email-protection#bcd5d2dad3fcccced3daddcfd3d292dfd3d192c8ce" style="font-size:0.92rem; font-weight:600; color:var(--rust); text-decoration:none;"><span class="__cf_email__" data-cfemail="6d04030b022d1d1f020b0c1e0203430e020043191f">[email&#160;protected]</span></a>
+      <div style="font-size:0.78rem; color:#aaa; margin-top:0.4rem;">48 saat içinde yanıt</div>
+    </div>
+    <div style="background:var(--white); padding:2.5rem 2rem; text-align:center; border-left:1px solid var(--border); border-right:1px solid var(--border); transition:background 0.2s;" onmouseover="this.style.background='var(--cream)'" onmouseout="this.style.background='var(--white)'">
+      <div style="font-size:2rem; margin-bottom:0.8rem;">📋</div>
+      <div style="font-size:0.75rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:#777; margin-bottom:0.5rem;">Talep Formu</div>
+      <a href="#talep-formu" style="font-size:0.92rem; font-weight:600; color:var(--rust); text-decoration:none;">Forma Git →</a>
+      <div style="font-size:0.78rem; color:#aaa; margin-top:0.4rem;">En hızlı yol</div>
+    </div>
+    <div style="background:var(--white); padding:2.5rem 2rem; text-align:center; transition:background 0.2s;" onmouseover="this.style.background='var(--cream)'" onmouseout="this.style.background='var(--white)'">
+      <div style="font-size:2rem; margin-bottom:0.8rem;">📍</div>
+      <div style="font-size:0.75rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:#777; margin-bottom:0.5rem;">Konum</div>
+      <div style="font-size:0.92rem; font-weight:600; color:var(--ink);">Türkiye</div>
+      <div style="font-size:0.78rem; color:#aaa; margin-top:0.4rem;">Tüm Türkiye'ye hizmet</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <a class="footer-logo" href="#"><span>PRO</span>FASON</a>
+    <div class="footer-tagline">Türkiye'nin Fason Üretim Köprüsü • bulurum.com kaynaklı tedarikçi ağı</div>
+  </div>
+  <div class="footer-right">
+    Talep & Bilgi: <strong style="color:#ddd"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="620b0c040d2212100d0403110d0c4c010d0f4c1610">[email&#160;protected]</a></strong><br>
+    Çamaşır Suyu • Tuvalet Kağıdı • El Sabunu • Kağıt Havlu<br>
+    Karton Bardak • Plastik Bardak • Karton • Strafor • Bant • Streç<br>
+    <span style="color:#555; font-size:0.7rem;">© 2026 ProFason. Tüm hakları saklıdır.</span>
+  </div>
+</footer>
+
+<!-- TALEP MODALI -->
+<div class="talep-modal" id="talepModal">
+  <div class="talep-modal-box">
+
+    <button class="talep-modal-close" id="modalClose" aria-label="Kapat">✕</button>
+
+    <div class="talep-modal-header">
+      <span class="talep-modal-icon" id="modalUrunIcon">📦</span>
+      <div>
+        <div class="talep-modal-eyebrow">Talep Oluştur</div>
+        <div class="talep-modal-title" id="modalUrunBaslik">Ürün Adı</div>
+      </div>
+    </div>
+
+    <div class="talep-modal-note">
+      Talebiniz <strong>doğrudan fabrikaya iletilir</strong> — teklif 48 saat içinde e-postanıza gelir.
+    </div>
+
+    <form id="modalForm">
+      <div class="form-row">
+        <div class="form-group">
+          <label for="m_ad">Ad Soyad *</label>
+          <input type="text" id="m_ad" placeholder="Ad Soyad" required>
+        </div>
+        <div class="form-group">
+          <label for="m_sirket">Firma Adı</label>
+          <input type="text" id="m_sirket" placeholder="Firma (varsa)">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="m_email">E-posta *</label>
+          <input type="email" id="m_email" placeholder="siz@firma.com" required>
+        </div>
+        <div class="form-group">
+          <label for="m_telefon">Telefon *</label>
+          <input type="tel" id="m_telefon" placeholder="05xx xxx xx xx" required>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="modalUrun">Ürün Kategorisi *</label>
+        <select id="modalUrun" required>
+          <option value="">— Ürün seçin —</option>
+          <option>🧴 Çamaşır Suyu</option>
+          <option>🧻 Tuvalet Kağıdı</option>
+          <option>🧼 El Sabunu (Sıvı)</option>
+          <option>🤲 El için Kağıt Havlu</option>
+          <option>☕ Karton Bardak</option>
+          <option>🥤 Plastik Bardak</option>
+          <option>📦 Karton / Koli / Kutu</option>
+          <option>🧊 Strafor (EPS Köpük)</option>
+          <option>🔖 Bant (Koli/OPP)</option>
+          <option>🌀 Streç Film</option>
+        </select>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="m_miktar">Miktar / Adet *</label>
+          <input type="text" id="m_miktar" placeholder="Örn: 5.000 adet" required>
+        </div>
+        <div class="form-group">
+          <label for="m_teslim">İstenen Teslim Tarihi</label>
+          <input type="date" id="m_teslim">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="m_ozel">Özel İstekler / Teknik Detaylar</label>
+        <textarea id="m_ozel" placeholder="Baskı, renk, ebat, özel marka talebi vs..." style="min-height:80px;"></textarea>
+      </div>
+      <button type="submit" class="btn-submit">TALEBİ GÖNDER — FABRİKAYA İLET →</button>
+    </form>
+
+    <div class="success-msg" id="modalSuccessMsg">
+      ✅ Talebiniz alındı! Üreticiye iletildi. 48 saat içinde teklifiniz mail adresinize ulaşacak.
+    </div>
+
+  </div>
+</div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  // ── Scroll animasyonları ──
+  const fadeEls = document.querySelectorAll('.fade-up');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 80);
+      }
+    });
+  }, { threshold: 0.1 });
+  fadeEls.forEach(el => observer.observe(el));
+
+  // ── Ürün kartına tıklayınca MODAL aç ──
+  const modal = document.getElementById('talepModal');
+  const modalUrun = document.getElementById('modalUrun');
+  const modalUrunBaslik = document.getElementById('modalUrunBaslik');
+  const modalUrunIcon = document.getElementById('modalUrunIcon');
+  const modalClose = document.getElementById('modalClose');
+
+  const urunIcons = {
+    'Çamaşır Suyu': '🧴',
+    'Tuvalet Kağıdı': '🧻',
+    'El Sabunu (Sıvı)': '🧼',
+    'El için Kağıt Havlu': '🤲',
+    'Karton Bardak': '☕',
+    'Plastik Bardak': '🥤',
+    'Karton (Koli/Kutu)': '📦',
+    'Strafor (EPS Köpük)': '🧊',
+    'Bant (Koli/OPP)': '🔖',
+    'Streç Film': '🌀',
+  };
+
+  document.querySelectorAll('.product-card').forEach(card => {
+    card.addEventListener('click', (e) => {
+      e.preventDefault();
+      const productName = card.dataset.product;
+
+      // Modal select'i doldur
+      for (let opt of modalUrun.options) {
+        if (opt.text.includes(productName) || opt.value.includes(productName)) {
+          modalUrun.value = opt.value;
+          break;
+        }
+      }
+
+      // Modal başlığı güncelle
+      modalUrunBaslik.textContent = productName;
+      modalUrunIcon.textContent = urunIcons[productName] || '📦';
+
+      // Modalı aç
+      modal.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    });
+  });
+
+  // Modal kapat
+  function closeModal() {
+    modal.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  modalClose.addEventListener('click', closeModal);
+  modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
+
+  // Modal form submit
+  document.getElementById('modalForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const data = {
+      ad: document.getElementById('m_ad').value,
+      sirket: document.getElementById('m_sirket').value || '—',
+      email: document.getElementById('m_email').value,
+      telefon: document.getElementById('m_telefon').value,
+      urun: document.getElementById('modalUrun').value,
+      miktar: document.getElementById('m_miktar').value,
+      teslim: document.getElementById('m_teslim').value || 'Belirtilmedi',
+      ozel: document.getElementById('m_ozel').value || '—',
+    };
+    const konu = encodeURIComponent(`[ProFason Talep] ${data.urun} – ${data.ad}`);
+    const govde = encodeURIComponent(
+`YENİ FABRİKA TALEBİ — PROFASON.COM.TR
+═══════════════════════════════
+Talep Eden : ${data.ad}
+Firma       : ${data.sirket}
+E-posta     : ${data.email}
+Telefon     : ${data.telefon}
+═══════════════════════════════
+ÜRÜN        : ${data.urun}
+MİKTAR      : ${data.miktar}
+TESLİM      : ${data.teslim}
+ÖZEL İSTEK  : ${data.ozel}
+═══════════════════════════════
+Bu talep profason.com.tr üzerinden otomatik olarak gönderilmiştir.`);
+    window.location.href = `mailto:info@profason.com.tr?subject=${konu}&body=${govde}`;
+    document.getElementById('modalSuccessMsg').classList.add('show');
+    this.reset();
+    setTimeout(() => { document.getElementById('modalSuccessMsg').classList.remove('show'); closeModal(); }, 4000);
+  });
+
+  // ── Form submit – EmailJS veya mailto fallback ──
+  document.getElementById('orderForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const data = {
+      ad: document.getElementById('ad').value,
+      sirket: document.getElementById('sirket').value || '—',
+      email: document.getElementById('email').value,
+      telefon: document.getElementById('telefon').value,
+      urun: document.getElementById('urun').value,
+      miktar: document.getElementById('miktar').value,
+      teslim: document.getElementById('teslim').value || 'Belirtilmedi',
+      ozel: document.getElementById('ozel').value || '—',
+    };
+
+    // ── mailto köprüsü oluştur (backend entegrasyonu yapana kadar çalışır) ──
+    const konu = encodeURIComponent(`[ProFason Talep] ${data.urun} – ${data.ad}`);
+    const govde = encodeURIComponent(
+`YENİ FABRİKA TALEBİ — PROFASON.COM.TR
+═══════════════════════════════
+Talep Eden : ${data.ad}
+Firma       : ${data.sirket}
+E-posta     : ${data.email}
+Telefon     : ${data.telefon}
+═══════════════════════════════
+ÜRÜN        : ${data.urun}
+MİKTAR      : ${data.miktar}
+TESLİM      : ${data.teslim}
+ÖZEL İSTEK  : ${data.ozel}
+═══════════════════════════════
+Bu talep profason.com.tr üzerinden otomatik olarak gönderilmiştir.
+Lütfen fiyat, termin ve koşulları talep sahibine iletin.
+Talep sahibi e-posta: ${data.email}
+`);
+
+    // Fabrika mail adresi buraya gelecek — şimdilik kendinizin maili
+    const fabrikaMail = 'info@profason.com.tr';
+    window.location.href = `mailto:${fabrikaMail}?subject=${konu}&body=${govde}`;
+
+    // Başarı mesajı göster
+    document.getElementById('successMsg').classList.add('show');
+    document.getElementById('orderForm').reset();
+
+    // 8 saniye sonra gizle
+    setTimeout(() => document.getElementById('successMsg').classList.remove('show'), 8000);
+  });
+
+  // ── Hamburger menü ──
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('active');
+    mobileMenu.classList.toggle('open');
+  });
+
+  // Menü linklerine tıklayınca kapat
+  document.querySelectorAll('.mobile-link').forEach(link => {
+    link.addEventListener('click', () => {
+      hamburger.classList.remove('active');
+      mobileMenu.c
